@@ -25,6 +25,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/rekap">
+            <i class="icon-grid menu-icon fas fa-folder-open"></i>
+              <span class="menu-title">Rekap Absensi</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="/user">
             <i class="icon-grid menu-icon fas fa-user"></i>
               <span class="menu-title">User</span>

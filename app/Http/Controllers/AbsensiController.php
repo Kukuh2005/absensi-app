@@ -44,11 +44,11 @@ class AbsensiController extends Controller
     {
         $absensi = new Absensi;
         $absensi->siswa_id = $request->siswa_id;
+        $absensi->kelas_id = $request->kelas_id;
         $absensi->status = $request->status;
 
         $tanggalSekarang = now('Asia/Jakarta')->format('Y-m-d H:i:s');
         $absensi->tanggal = $tanggalSekarang;
-
         $absensi->save();
 
         // Absensi::truncate();

@@ -29,6 +29,7 @@
                     <div class="card-header rounded-pill bg-info" style="margin-top: -20px">
                         <h5 class="text-light">{{$item->nama_siswa}}</h5>
                         <input type="text" value="{{$item->id}}" name="siswa_id" hidden>
+                        <input type="text" value="{{$item->kelas_id}}" name="kelas_id" hidden>
                     </div>
                     <div class="card-body">
                         <div class="form-group">
@@ -49,7 +50,6 @@
                             <label class="text-dark" for="status{{$item->id}}_tanpa_keterangan">Tanpa
                                 Keterangan</label>
                         </div>
-                        <div id="alert{{$item->id}}" class="text-success d-none">Absensi Berhasil</div>
                     </div>
                 </div>
             </form>
@@ -88,8 +88,9 @@ $(document).ready(function () {
         });
     });
 });
-
-function selesai(){
+</script>
+<script>
+    function selesai(){
     $(function() {
         swal('Berhasil', 'Absensi berhasil disimpan', 'success', {
           buttons: false,

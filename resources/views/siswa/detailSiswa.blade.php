@@ -40,7 +40,7 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$item->nama_siswa}}</td>
-                                    <td>{{$item->kelas_id}}</td>
+                                    <td>{{$item->kelas->kelas}}</td>
                                     <td>{{$item->tanggal_lahir}}</td>
                                     <td>{{$item->alamat}}</td>
                                     <td>
