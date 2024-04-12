@@ -22,8 +22,7 @@
                     <form class="row" action="/rekap/{{$kelas->id}}/cari" method="get">
                         <div class="col-md-3">
                             <div class="form-group d-flex">
-                                <input type="date" class="form-control" name="tanggal" id="tanggal"
-                                    max="<?php echo date('Y-m-d'); ?>">
+                                <input type="date" class="form-control" name="tanggal" value="{{$tanggal}}" id="tanggal" max="<?php echo date('Y-m-d'); ?>">
                                 <div class="btn-group ml-2" role="group" aria-label="Basic example">
                                     <button type="submit" class="btn btn-outline-success"><i
                                             class="fas fa-search"></i></button>
@@ -118,24 +117,6 @@
             window.location.href = '/absensi';
         }, 2000);
     }
-
-</script>
-<script>
-    // Mendapatkan elemen input tanggal
-    var tanggal = document.getElementById('tanggal');
-
-    // Mendapatkan tanggal hari ini
-    var today = new Date();
-    var year = today.getFullYear();
-    var month = String(today.getMonth() + 1).padStart(2, '0'); // Tambahkan nol di depan jika bulan < 10
-    var day = String(today.getDate()).padStart(2, '0'); // Tambahkan nol di depan jika tanggal < 10
-
-    // Format tanggal sebagai "YYYY-MM-DD" (format yang diharapkan untuk input type="date")
-    var formattedDate = year + '-' + month + '-' + day;
-
-    // Set nilai input tanggal menjadi tanggal hari ini
-    tanggal.value = formattedDate;
-
 </script>
 <script>
     function print() {

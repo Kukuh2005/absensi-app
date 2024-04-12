@@ -81,6 +81,12 @@
         });
       });
     </script>
+  @elseif(session('absensi-complete'))
+    <script>
+      $(function() {
+        swal('Absensi Complete', '{{session('absensi-complete')}}', 'success');
+      });
+  </script>
   @endif
 
   @stack('script')

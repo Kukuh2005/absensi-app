@@ -23,10 +23,22 @@ class AbsensiController extends Controller
     
     public function absensi($kelas_id)
     {
-        $siswa = Siswa::where('kelas_id', $kelas_id)->get();
-        $kelas = Kelas::find($kelas_id);
-        
-        return view('absensi.absensiSiswa', compact('siswa', 'kelas'));
+        $now = Carbon::now();
+        $tanggal = $now->year . '-' . $now->month . '-' . $now->day;
+        $tanggal = $now->format('Y-m-d');
+
+        $exists = Absensi::where('kelas_id', $kelas_id)->where('tanggal', $tanggal)->exists();
+
+        if($exists){
+            $kelas = Kelas::find($kelas_id);
+            return redirect('absensi')->with('absensi-complete', 'Siswa Kelas ' . $kelas->kelas . ' telah melakukan absensi pada hari ini.');
+        }else
+        {
+            $siswa = Siswa::where('kelas_id', $kelas_id)->get();
+            $kelas = Kelas::find($kelas_id);
+            
+            return view('absensi.absensiSiswa', compact('siswa', 'kelas'));
+        }
     }
 
     /**
