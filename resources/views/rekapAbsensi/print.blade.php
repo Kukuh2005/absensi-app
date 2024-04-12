@@ -50,18 +50,19 @@
     <table>
         <thead>
             <tr>
-                <th colspan="6">
+                <th colspan="7">
                     <p style="text-align: center">Kelas {{ $kelas->kelas }}</p>
-                    <p style="text-align: center">Tanggal: {{ $tanggal }}</p>
+                    <p style="text-align: center">Tanggal: {{ $tanggal_dari }} sampai {{ $tanggal_sampai }}</p>
                 </th>
             </tr>
             <tr>
                 <th>No</th>
                 <th>Nama Siswa</th>
                 <th>Kelas</th>
-                <th>Status Absensi</th>
-                <th>Tanggal</th>
-                <th>Guru</th>
+                <th>Masuk</th>
+                <th>Izin</th>
+                <th>Sakit</th>
+                <th>Tanpa Keterangan</th>
             </tr>
         </thead>
         <tbody>
@@ -70,9 +71,10 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $item->siswa->nama_siswa }}</td>
                 <td>{{ $item->kelas->kelas }}</td>
-                <td>{{ $item->status }}</td>
-                <td>{{ $item->tanggal }}</td>
-                <td>{{ $item->Guru }}</td>
+                <td>{{ $item->masuk_count }}</td>
+                <td>{{ $item->izin_count }}</td>
+                <td>{{ $item->sakit_count }}</td>
+                <td>{{ $item->tanpa_keterangan_count }}</td>
             </tr>
             @endforeach
         </tbody>

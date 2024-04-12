@@ -30,6 +30,7 @@
                         <h5 class="text-light">{{$item->nama_siswa}}</h5>
                         <input type="text" value="{{$item->id}}" name="siswa_id" hidden>
                         <input type="text" value="{{$item->kelas_id}}" name="kelas_id" hidden>
+                        <input type="text" value="{{auth()->user()->id}}" name="guru_id" hidden>
                     </div>
                     <div class="card-body">
                         <div class="form-group">
@@ -83,7 +84,11 @@ $(document).ready(function () {
                 });
             },
             error: function (xhr, status, error) {
-                console.error(error);
+                iziToast.error({
+                title: 'Gagal Absensi',
+                message: error,
+                position: 'topRight'
+                });
             }
         });
     });

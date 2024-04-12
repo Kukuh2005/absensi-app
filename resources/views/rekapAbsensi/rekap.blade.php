@@ -20,13 +20,15 @@
             <div class="card">
                 <div class="card-header bg-white">
                     <form class="row" action="/rekap/{{$kelas->id}}/cari" method="get">
-                        <div class="col-md-3">
+                        <div class="col-md-12">
                             <div class="form-group d-flex">
-                                <input type="date" class="form-control" name="tanggal" value="{{$tanggal}}" id="tanggal" max="<?php echo date('Y-m-d'); ?>">
+                                <input type="date" class="form-control" name="tanggal_dari" value="{{$tanggal_dari}}" id="tanggal_dari" max="<?php echo date('Y-m-d'); ?>">
+                                <span><i class="fas fa-arrow-right m-3"></i></span>
+                                <input type="date" class="form-control" name="tanggal_sampai" value="{{$tanggal_sampai}}" id="tanggal_sampai" max="<?php echo date('Y-m-d'); ?>">
                                 <div class="btn-group ml-2" role="group" aria-label="Basic example">
-                                    <button type="submit" class="btn btn-outline-success"><i
+                                    <button type="submit" class="btn btn-outline-success btn-sm"><i
                                             class="fas fa-search"></i></button>
-                                    <button type="button" onclick="print()" class="btn btn-outline-danger"><i
+                                    <button type="button" onclick="print()" class="btn btn-outline-danger btn-sm"><i
                                             class="fas fa-print"></i></button>
                                 </div>
                             </div>
@@ -117,12 +119,15 @@
             window.location.href = '/absensi';
         }, 2000);
     }
+
 </script>
 <script>
     function print() {
-        var tanggal = document.getElementById('tanggal').value;
+        var tanggal_dari = document.getElementById('tanggal_dari').value;
+        var tanggal_sampai = document.getElementById('tanggal_sampai').value;
 
-        window.open('/rekap/{{$kelas->id}}/' + tanggal + '/print', '_blank');
+        window.open('/rekap/{{$kelas->id}}/' + tanggal_dari + '/' + tanggal_sampai + '/print', '_blank');
     }
+
 </script>
 @endpush

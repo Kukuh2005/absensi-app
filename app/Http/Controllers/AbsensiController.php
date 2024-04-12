@@ -31,7 +31,7 @@ class AbsensiController extends Controller
 
         if($exists){
             $kelas = Kelas::find($kelas_id);
-            return redirect('absensi')->with('absensi-complete', 'Siswa Kelas ' . $kelas->kelas . ' telah melakukan absensi pada hari ini.');
+            return redirect('absensi')->with('absensi-complete', 'Siswa kelas ' . $kelas->kelas . ' telah melakukan absensi pada hari ini.');
         }else
         {
             $siswa = Siswa::where('kelas_id', $kelas_id)->get();
@@ -61,6 +61,7 @@ class AbsensiController extends Controller
 
         $tanggalSekarang = now('Asia/Jakarta')->format('Y-m-d H:i:s');
         $absensi->tanggal = $tanggalSekarang;
+        $absensi->guru_id = $request->guru_id;
         $absensi->save();
 
         // Absensi::truncate();

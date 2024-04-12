@@ -1,40 +1,46 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav">
-          <li class="nav-item">
+    <ul class="nav">
+        <li class="nav-item">
             <a class="nav-link" href="/dashboard">
-              <i class="icon-grid menu-icon fas fa-tachometer-alt"></i>
-              <span class="menu-title">Dashboard</span>
+                <i class="icon-grid menu-icon fas fa-tachometer-alt"></i>
+                <span class="menu-title">Dashboard</span>
             </a>
-          </li>
-          <li class="nav-item">
+        </li>
+        @if(auth()->user()->level == 'admin')
+        <li class="nav-item">
             <a class="nav-link" href="/kelas">
-            <i class="icon-grid menu-icon fas fa-chalkboard-teacher"></i>
-              <span class="menu-title">Kelas</span>
+                <i class="icon-grid menu-icon fas fa-chalkboard-teacher"></i>
+                <span class="menu-title">Kelas</span>
             </a>
-          </li>
-          <li class="nav-item">
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="/siswa">
-            <i class="icon-grid menu-icon fas fa-users"></i>
-              <span class="menu-title">Siswa</span>
+                <i class="icon-grid menu-icon fas fa-users"></i>
+                <span class="menu-title">Siswa</span>
             </a>
-          </li>
-          <li class="nav-item">
+        </li>
+        @endif
+        @if(auth()->user()->level == 'guru')
+        <li class="nav-item">
             <a class="nav-link" href="/absensi">
-            <i class="icon-grid menu-icon fas fa-clipboard-list"></i>
-              <span class="menu-title">Absensi Siswa</span>
+                <i class="icon-grid menu-icon fas fa-clipboard-list"></i>
+                <span class="menu-title">Absensi Siswa</span>
             </a>
-          </li>
-          <li class="nav-item">
+        </li>
+        @endif
+        @if(auth()->user()->level == 'admin')
+        <li class="nav-item">
             <a class="nav-link" href="/rekap">
-            <i class="icon-grid menu-icon fas fa-folder-open"></i>
-              <span class="menu-title">Rekap Absensi</span>
+                <i class="icon-grid menu-icon fas fa-folder-open"></i>
+                <span class="menu-title">Rekap Absensi</span>
             </a>
-          </li>
-          <li class="nav-item">
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="/user">
-            <i class="icon-grid menu-icon fas fa-user"></i>
-              <span class="menu-title">User</span>
+                <i class="icon-grid menu-icon fas fa-user"></i>
+                <span class="menu-title">User</span>
             </a>
-          </li>
-        </ul>
-      </nav>
+        </li>
+        @endif
+    </ul>
+</nav>

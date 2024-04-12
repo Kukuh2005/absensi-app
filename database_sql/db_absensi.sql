@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 12 Mar 2024 pada 01.48
--- Versi server: 10.4.32-MariaDB
--- Versi PHP: 8.1.25
+-- Generation Time: Apr 12, 2024 at 02:20 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.1.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,11 +24,16 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `absensis`
+-- Table structure for table `absensis`
 --
 
 CREATE TABLE `absensis` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `siswa_id` int(11) NOT NULL,
+  `kelas_id` int(11) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `tanggal` date NOT NULL,
+  `guru_id` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -36,7 +41,7 @@ CREATE TABLE `absensis` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `failed_jobs`
+-- Table structure for table `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
@@ -52,60 +57,29 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jam_pelajarans`
---
-
-CREATE TABLE `jam_pelajarans` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `jam_pelajaran` varchar(255) NOT NULL,
-  `dari` time NOT NULL,
-  `sampai` time NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `jam_pelajarans`
---
-
-INSERT INTO `jam_pelajarans` (`id`, `jam_pelajaran`, `dari`, `sampai`, `created_at`, `updated_at`) VALUES
-(2, 'Jam 1', '07:00:00', '07:45:00', '2024-03-04 22:10:43', '2024-03-04 22:12:23');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `kelas`
+-- Table structure for table `kelas`
 --
 
 CREATE TABLE `kelas` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `kelas` varchar(255) NOT NULL,
-  `tingkat` varchar(20) NOT NULL,
+  `tingkat` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `kelas`
+-- Dumping data for table `kelas`
 --
 
 INSERT INTO `kelas` (`id`, `kelas`, `tingkat`, `created_at`, `updated_at`) VALUES
-(2, 'XII RPL 1', 'XII', '2024-03-04 04:55:47', '2024-03-04 23:26:06'),
-(3, 'XII RPL 2', 'XII', '2024-03-04 05:19:28', '2024-03-11 17:44:36'),
-(4, 'XII TPM 1', 'XII', '2024-03-04 05:34:23', '2024-03-11 17:44:45'),
-(5, 'XII TPM 2', 'XII', '2024-03-04 05:35:17', '2024-03-11 17:44:55'),
-(6, 'XII TPM 3', 'XII', '2024-03-04 05:35:25', '2024-03-04 05:35:25'),
-(7, 'XII TPM 4', 'XII', '2024-03-04 05:35:33', '2024-03-04 05:35:33'),
-(8, 'XII TPM 5', 'XII', '2024-03-04 05:35:44', '2024-03-04 05:35:44'),
-(9, 'XII TPM 6', 'XII', '2024-03-04 05:35:53', '2024-03-04 05:35:53'),
-(10, 'XII TKR 1', 'XII', '2024-03-11 17:13:50', '2024-03-11 17:13:50'),
-(11, 'XII TKR 2', 'XII', '2024-03-11 17:14:59', '2024-03-11 17:14:59'),
-(12, 'XII TKR 3', 'XII', '2024-03-11 17:15:32', '2024-03-11 17:15:32');
+(1, 'XII RPL 1', 'XII', '2024-04-12 05:16:11', '2024-04-12 05:16:11'),
+(2, 'XII RPL 2', 'XII', '2024-04-12 05:16:26', '2024-04-12 05:16:26');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -115,23 +89,22 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_reset_tokens_table', 1),
-(3, '2019_08_19_000000_create_failed_jobs_table', 1),
-(4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(5, '2024_03_03_123839_create_kelas_table', 1),
-(6, '2024_03_04_125222_create_siswas_table', 2),
-(7, '2024_03_04_125311_create_absensis_table', 2),
-(8, '2024_03_04_125323_create_jam_pelajarans_table', 2);
+(15, '2014_10_12_000000_create_users_table', 1),
+(16, '2014_10_12_100000_create_password_reset_tokens_table', 1),
+(17, '2019_08_19_000000_create_failed_jobs_table', 1),
+(18, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(19, '2024_03_03_123839_create_kelas_table', 1),
+(20, '2024_03_04_125222_create_siswas_table', 1),
+(21, '2024_03_04_125311_create_absensis_table', 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `password_reset_tokens`
+-- Table structure for table `password_reset_tokens`
 --
 
 CREATE TABLE `password_reset_tokens` (
@@ -143,7 +116,7 @@ CREATE TABLE `password_reset_tokens` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `personal_access_tokens`
+-- Table structure for table `personal_access_tokens`
 --
 
 CREATE TABLE `personal_access_tokens` (
@@ -162,27 +135,43 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `siswas`
+-- Table structure for table `siswas`
 --
 
 CREATE TABLE `siswas` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `nama_siswa` varchar(255) NOT NULL,
+  `kelas_id` int(11) NOT NULL,
+  `tanggal_lahir` date NOT NULL,
+  `alamat` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `siswas`
+--
+
+INSERT INTO `siswas` (`id`, `nama_siswa`, `kelas_id`, `tanggal_lahir`, `alamat`, `created_at`, `updated_at`) VALUES
+(1, 'Kukuh Wisanggeni', 1, '0205-08-09', 'Magersari', '2024-04-12 05:16:49', '2024-04-12 05:16:49'),
+(2, 'Dani Fitra', 1, '1994-02-07', 'Sidokepung', '2024-04-12 05:17:07', '2024-04-12 05:17:07'),
+(3, 'Pijal', 1, '2009-07-08', 'banga belitung', '2024-04-12 05:17:25', '2024-04-12 05:17:25'),
+(4, 'Joko', 1, '2010-07-12', 'Cidek e yacob', '2024-04-12 05:18:02', '2024-04-12 05:18:02'),
+(5, 'Yacob', 1, '1998-02-18', 'Wuhan', '2024-04-12 05:18:37', '2024-04-12 05:18:37');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
+  `level` varchar(255) NOT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -193,44 +182,38 @@ CREATE TABLE `users` (
 --
 
 --
--- Indeks untuk tabel `absensis`
+-- Indexes for table `absensis`
 --
 ALTER TABLE `absensis`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `failed_jobs`
+-- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Indeks untuk tabel `jam_pelajarans`
---
-ALTER TABLE `jam_pelajarans`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `kelas`
+-- Indexes for table `kelas`
 --
 ALTER TABLE `kelas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `password_reset_tokens`
+-- Indexes for table `password_reset_tokens`
 --
 ALTER TABLE `password_reset_tokens`
   ADD PRIMARY KEY (`email`);
 
 --
--- Indeks untuk tabel `personal_access_tokens`
+-- Indexes for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
@@ -238,66 +221,60 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indeks untuk tabel `siswas`
+-- Indexes for table `siswas`
 --
 ALTER TABLE `siswas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `absensis`
+-- AUTO_INCREMENT for table `absensis`
 --
 ALTER TABLE `absensis`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `failed_jobs`
+-- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `jam_pelajarans`
+-- AUTO_INCREMENT for table `kelas`
 --
-ALTER TABLE `jam_pelajarans`
+ALTER TABLE `kelas`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `kelas`
---
-ALTER TABLE `kelas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT untuk tabel `migrations`
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT untuk tabel `personal_access_tokens`
+-- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `siswas`
+-- AUTO_INCREMENT for table `siswas`
 --
 ALTER TABLE `siswas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;

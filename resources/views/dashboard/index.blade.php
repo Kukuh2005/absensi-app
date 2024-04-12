@@ -27,7 +27,7 @@
             <div class="card card-dark-blue">
                 <div class="card-body">
                     <p class="mb-4">Guru</p>
-                    <p class="fs-30 mb-2">{{$user->count()}}</p>
+                    <p class="fs-30 mb-2">{{$guru->count()}}</p>
                     <a href="" class="text-white">Lihat detail</a>
                 </div>
             </div>

@@ -14,7 +14,8 @@ class DashboardController extends Controller
         $kelas = Kelas::all();
         $siswa = Siswa::all();
         $user = User::all();
+        $guru = User::where('level', 'guru')->get();
         
-        return view('dashboard.index', compact('kelas', 'siswa', 'user'));
+        return view('dashboard.index', compact('kelas', 'siswa', 'user', 'guru'));
     }
 }
