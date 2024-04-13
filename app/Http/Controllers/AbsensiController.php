@@ -54,16 +54,16 @@ class AbsensiController extends Controller
      */
     public function store(Request $request)
     {
+        $tanggalSekarang = now('Asia/Jakarta')->format('Y-m-d H:i:s');
+        
         $absensi = new Absensi;
         $absensi->siswa_id = $request->siswa_id;
         $absensi->kelas_id = $request->kelas_id;
         $absensi->status = $request->status;
-
-        $tanggalSekarang = now('Asia/Jakarta')->format('Y-m-d H:i:s');
+    
         $absensi->tanggal = $tanggalSekarang;
-        $absensi->guru_id = $request->guru_id;
+        $absensi->user_id = $request->user_id;
         $absensi->save();
-
         // Absensi::truncate();
     }
 
@@ -86,9 +86,15 @@ class AbsensiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Absensi $absensi)
+    public function update(Request $request, $kelas_id)
     {
-        //
+        $tanggalSekarang = now('Asia/Jakarta')->format('Y-m-d H:i:s');
+        $siswa_get = Absensi::where('siswa_id', $siswa_id)->where('tanggal', $tanggalSekarang)->first();
+
+        if ($siswa_get) {
+            $siswa_get->status = $request->status;
+            $siswa_get->save();
+        }
     }
 
     /**

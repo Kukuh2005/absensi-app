@@ -36,7 +36,6 @@
                                         <form action="/kelas/{{$item->id}}/delete">
                                             @method('DELETE')
                                             @csrf
-                                            <a href="" class="btn btn-primary">Detail</a>
                                             <a href="/kelas/{{$item->id}}/edit" class="btn btn-warning">Edit</a>
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>

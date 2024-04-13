@@ -56,7 +56,7 @@
                                     <td>{{$item->siswa->nama_siswa}}</td>
                                     <td>{{$item->kelas->kelas}}</td>
                                     <td>{{$item->status}}</td>
-                                    <td>1</td>
+                                    <td>{{$item->user->username}}</td>
                                     <td>{{$item->tanggal}}</td>
                                     @endif
                                 </tr>

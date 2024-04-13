@@ -34,7 +34,7 @@
               <form action="/postlogin" method="POST" class="pt-3">
                 @csrf
                 <div class="form-group">
-                  <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" name="username" placeholder="Username">
+                  <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" name="email" placeholder="Email">
                 </div>
                 <div class="form-group">
                   <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" name="password" placeholder="Password">

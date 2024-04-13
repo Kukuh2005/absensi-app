@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Siswa;
 use App\Models\Kelas;
+use App\Models\User;
 
 class Absensi extends Model
 {
@@ -16,7 +17,7 @@ class Absensi extends Model
         'kelas_id',
         'status',
         'tanggal',
-        'guru_id'
+        'user_id'
     ];
 
     public function siswa()
@@ -27,5 +28,10 @@ class Absensi extends Model
     public function kelas()
     {
         return $this->belongsTo(Kelas::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

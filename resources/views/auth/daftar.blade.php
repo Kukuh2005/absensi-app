@@ -36,7 +36,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-lg" id="username"
-                                        name="username" placeholder="Username" oninput="validasiInput(this)">
+                                        name="username" placeholder="Nama" oninput="validasiInput(this)">
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-lg" id="exampleInputEmail1"
@@ -98,7 +98,7 @@
     <script>
         function validasiInput(inputElement) {
             // Membuang karakter angka dari nilai input
-            inputElement.value = inputElement.value.replace(/[^a-zA-Z]/g, '');
+            inputElement.value = inputElement.value.replace(/[0-9]/g, '');
         }
 
         // Ambil referensi ke elemen input password

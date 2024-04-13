@@ -15,7 +15,7 @@
         <div class="col-md-3">
             <div class="card card-tale mb-2" style="background-color: #2afa31">
                 <div class="card-body">
-                    <p class="mb-4">Kelas {{$item->kelas}}</p>
+                    <h4 class="mb-4 font-weight-bold">Kelas {{$item->kelas}}</h4>
                     <a href="/siswa/{{$item->id}}/detail" class="text-dark btn btn-sm"
                         style="background-color: #77f7d3">Detail</a>
                 </div>
@@ -25,7 +25,7 @@
         <div class="col-md-3">
             <div class="card card-tale mb-2" style="background-color: #3217fc">
                 <div class="card-body">
-                    <p class="mb-4">Kelas {{$item->kelas}}</p>
+                    <h4 class="mb-4 font-weight-bold">Kelas {{$item->kelas}}</h4>
                     <a href="/siswa/{{$item->id}}/detail" class="text-dark btn btn-sm"
                         style="background-color: #77f7d3">Detail</a>
                 </div>
@@ -35,7 +35,7 @@
         <div class="col-md-3">
             <div class="card card-tale mb-2" style="background-color: #fc6262">
                 <div class="card-body">
-                    <p class="mb-4">Kelas {{$item->kelas}}</p>
+                    <h4 class="mb-4 font-weight-bold">Kelas {{$item->kelas}}</h4>
                     <a href="/siswa/{{$item->id}}/detail" class="text-dark btn btn-sm"
                         style="background-color: #77f7d3">Detail</a>
                 </div>
@@ -45,7 +45,7 @@
         <div class="col-md-3">
             <div class="card card-tale mb-2" style="background-color: #fce514">
                 <div class="card-body">
-                    <p class="mb-4">Kelas {{$item->kelas}}</p>
+                    <h4 class="mb-4 font-weight-bold">Kelas {{$item->kelas}}</h4>
                     <a href="/siswa/{{$item->id}}/detail" class="text-dark btn btn-sm"
                         style="background-color: #77f7d3">Detail</a>
                 </div>

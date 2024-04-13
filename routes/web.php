@@ -7,6 +7,7 @@ use App\Http\Controllers\KelasController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\RekapAbsensiController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,14 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function(){
     Route::get('/rekap/{kelas_id}', [RekapAbsensiController::class, 'rekap']);
     Route::get('/rekap/{kelas_id}/cari', [RekapAbsensiController::class, 'cari']);
     Route::get('/rekap/{kelas_id}/{tanggal_dari}/{tanggal_sampai}/print', [RekapAbsensiController::class, 'print']); 
+    
+    Route::get('/user', [UserController::class, 'index']);
+    Route::post('/user/store', [UserController::class, 'store']);
+    Route::get('/user/{id}/delete', [UserController::class, 'destroy']);
+    Route::get('/user/{id}/edit', [UserController::class, 'edit']);
+    Route::put('/user/{id}/update', [UserController::class, 'update']);
+    Route::get('/admin/detail', [UserController::class, 'admin']);
+    Route::get('/guru/detail', [UserController::class, 'guru']);
 });
 
 Route::group(['middleware' => ['auth', 'ceklevel:admin,guru']], function(){
@@ -54,4 +63,5 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin,guru']], function(){
     Route::get('/absensi', [AbsensiController::class, 'index']);
     Route::get('/absensi/{kelas_id}', [AbsensiController::class, 'absensi']);
     Route::post('/absensi/{kelas_id}/store', [AbsensiController::class, 'store']);
+    Route::put('/absensi/{kelas_id}/update', [AbsensiController::class, 'update']);
 });
