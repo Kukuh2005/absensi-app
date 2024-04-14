@@ -34,23 +34,19 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <input type="radio" id="masuk{{$item->id}}" name="status" value="masuk"
-                                oninput="absensi({{$item->id}})">
+                            <input type="radio" id="masuk{{$item->id}}" name="status" value="masuk">
                             <label class="text-dark" for="masuk{{$item->id}}">Masuk</label>
                         </div>
                         <div class="form-group">
-                            <input type="radio" id="izin{{$item->id}}" name="status" value="izin"
-                                oninput="absensi({{$item->id}})">
+                            <input type="radio" id="izin{{$item->id}}" name="status" value="izin">
                             <label class="text-dark" for="izin{{$item->id}}">Izin</label>
                         </div>
                         <div class="form-group">
-                            <input type="radio" id="sakit{{$item->id}}" name="status" value="sakit"
-                                oninput="absensi({{$item->id}})">
+                            <input type="radio" id="sakit{{$item->id}}" name="status" value="sakit">
                             <label class="text-dark" for="sakit{{$item->id}}">Sakit</label>
                         </div>
                         <div class="form-group">
-                            <input type="radio" id="tanpa_keterangan{{$item->id}}" name="status"
-                                value="tanpa keterangan" oninput="absensi({{$item->id}})">
+                            <input type="radio" id="tanpa_keterangan{{$item->id}}" name="status" value="tanpa keterangan">
                             <label class="text-dark" for="tanpa_keterangan{{$item->id}}">Tanpa Keterangan</label>
                         </div>
                     </div>
@@ -71,8 +67,7 @@
 
 @push('script')
 <script>
-    function absensi(id) {
-        $('input[type=radio]').change(function () {
+    $('input[type=radio]').change(function () {
             var formData = $(this).closest('form').serialize();
             var url = $(this).closest('form').attr('action');
             $.ajax({
@@ -85,10 +80,6 @@
                         position: 'topRight'
                     });
 
-                    document.getElementById('masuk' + id).disabled = true;
-                    document.getElementById('izin' + id).disabled = true;
-                    document.getElementById('sakit' + id).disabled = true;
-                    document.getElementById('tanpa_keterangan' + id).disabled = true;
                 },
 
                 error: function (xhr, status, error) {
@@ -100,7 +91,6 @@
                 }
             });
         });
-    }
 
     function selesai() {
         swal('Berhasil', 'Absensi berhasil disimpan', 'success', {

@@ -63,8 +63,7 @@ class AbsensiController extends Controller
     
         $absensi->tanggal = $tanggalSekarang;
         $absensi->user_id = $request->user_id;
-        $absensi->save();
-        // Absensi::truncate();
+        $absensi->save();;
     }
 
     /**

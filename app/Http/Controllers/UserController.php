@@ -46,12 +46,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $kelas = new Kelas;
-        $kelas->kelas = $request->kelas;
-        $kelas->tingkat = $request->tingkat;
-        $kelas->save();
+        $user = new User;
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password_baru);
+        $user->level = $request->level;
+        $user->save();
 
-        return redirect('kelas')->with('sukses', 'Simpan data berhasil');
+        if($request->level == 'admin'){
+            return redirect('admin/detail')->with('sukses', 'Simpan data berhasil');   
+        }else{
+            return redirect('guru/detail')->with('sukses', 'Simpan data berhasil');   
+        }
+
     }
 
     /**
@@ -67,9 +74,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $kelas = Kelas::find($id);
+        $user = User::find($id);
 
-        return view('kelas.edit', compact('kelas'));
+        return view('user.edit', compact('user'));
     }
 
     /**
@@ -77,13 +84,26 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $kelas = Kelas::find($id);
+        if($request->password_baru == null){
+            $user = User::find($id);
+            $user->username = $request->username;
+            $user->email = $request->email;
+            $user->level = $request->level;
+            $user->update();
+        }else{
+            $user = User::find($id);
+            $user->username = $request->username;
+            $user->email = $request->email;
+            $user->password = bcrypt($request->password_baru);
+            $user->level = $request->level;
+            $user->update();
+        }
 
-        $kelas->kelas = $request->kelas;
-        $kelas->tingkat = $request->tingkat;
-        $kelas->update();
-
-        return redirect('kelas')->with('sukses', 'Berhasil edit data');
+        if($user->level == 'guru'){
+            return redirect('guru/detail')->with('sukses', ' Data berhasil update');
+        }else{
+            return redirect('admin/detail')->with('sukses', ' Data berhasil update');
+        }
     }
 
     /**

@@ -41,10 +41,10 @@
                                     <td>{{$item->email}}</td>
                                     <td>{{$item->level}}</td>
                                     <td>
-                                        <form action="/kelas/{{$item->id}}/delete">
+                                        <form action="/user/{{$item->id}}/delete">
                                             @method('DELETE')
                                             @csrf
-                                            <a href="/kelas/{{$item->id}}/edit" class="btn btn-warning">Edit</a>
+                                            <a href="/user/{{$item->id}}/edit" class="btn btn-warning">Edit</a>
                                             @if(auth()->user()->id != $item->id)
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                             @endif

@@ -9,10 +9,13 @@
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <span class="text-primary mr-2">{{auth()->user()->username}}</span>
               <img src="{{asset('template/images/auth/avatar-1.png')}}" alt="profile"/>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+              <a href="/profile" class="dropdown-item">
+                <i class="icon-grid menu-icon fas fa-user text-primary"></i>
+                Profile
+              </a>
               <a href="/logout" class="dropdown-item">
                 <i class="ti-power-off text-primary"></i>
                 Logout

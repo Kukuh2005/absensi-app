@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="/kelas/store" method="POST">
+                <form action="/user/store" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
@@ -28,18 +28,19 @@
                         </div>
                         <div class="col-md-6">
                             <select class="form-control form-control-lg" name="level" id="exampleFormControlSelect2">
-                                <option value="">Level</option>
-                                <option value="admin">Admin</option>
-                                <option value="guru">Guru</option>
+                                @if($level == 'Admin')
+                                <option value="admin" selected>Admin</option>
+                                @else
+                                <option value="guru" selected>Guru</option>
+                                @endif
                             </select>
                         </div>
                     </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+                    </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
-            </div>
-            </form>
         </div>
     </div>
 </div>
