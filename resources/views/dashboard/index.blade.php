@@ -5,10 +5,9 @@
 @section('content')
 <div class="content-wrapper">
     <div class="row">
-        <div class="col-md-12">
-            <div class="alert alert-success" role="alert">
-                Selamat datang <span class="font-weight-bold">{{auth()->user()->username}}</span>, Kamu login sebagai <span class="font-weight-bold">{{auth()->user()->level}}</span>
-            </div>
+        <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+            <h3 class="font-weight-bold">Selamat datang {{auth()->user()->username}}!</h3>
+            <h6 class="font-weight-normal mb-0">Kamu login sebagai <span class="text-primary">{{auth()->user()->level}}</span></h6>
         </div>
         @if(auth()->user()->level == 'admin')
         <div class="col-md-4 mb-2">
