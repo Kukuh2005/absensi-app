@@ -33,11 +33,11 @@
                                     <td>{{$item->kelas}}</td>
                                     <td>{{$item->tingkat}}</td>
                                     <td>
-                                        <form action="/kelas/{{$item->id}}/delete">
+                                        <form action="/kelas/{{$item->id}}/delete" id="delete-form">
                                             @method('DELETE')
                                             @csrf
                                             <a href="/kelas/{{$item->id}}/edit" class="btn btn-warning">Edit</a>
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="button" class="btn btn-danger" id="{{$item->kelas}}" onclick="confirmDelete(this)" data-id="{{$item->id}}">Delete</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -57,5 +57,27 @@
     $(document).ready(function () {
         $('#table').DataTable();
     });
+</script>
+<script>
+function confirmDelete(button) {
+    
+    event.preventDefault()
+    const id = button.getAttribute('data-id');
+    const kelas = button.getAttribute('id');
+    swal({
+            title: 'Hapus Kelas ' + kelas + '?',
+            text: 'Ketika Anda tekan OK, maka data tidak dapat dikembalikan !',
+            icon: 'warning',
+            buttons: true,
+            dangerMode: true,
+        })
+    .then((willDelete) => {
+        if (willDelete) {
+          const form = document.getElementById('delete-form');
+          form.action = '/kelas/' + id + '/delete';
+          form.submit();
+        }
+    });
+}
 </script>
 @endpush

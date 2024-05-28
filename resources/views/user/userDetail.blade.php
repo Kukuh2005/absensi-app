@@ -41,12 +41,12 @@
                                     <td>{{$item->email}}</td>
                                     <td>{{$item->level}}</td>
                                     <td>
-                                        <form action="/user/{{$item->id}}/delete">
+                                        <form action="/user/{{$item->id}}/delete" id="delete-form">
                                             @method('DELETE')
                                             @csrf
                                             <a href="/user/{{$item->id}}/edit" class="btn btn-warning">Edit</a>
                                             @if(auth()->user()->id != $item->id)
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="button" class="btn btn-danger" id="{{$item->username}}" data-id="{{$item->id}}" onclick="confirmDelete(this)">Delete</button>
                                             @endif
                                         </form>
                                     </td>
@@ -68,6 +68,28 @@
         $('#table').DataTable();
     });
 
+</script>
+<script>
+function confirmDelete(button) {
+    
+    event.preventDefault()
+    const id = button.getAttribute('data-id');
+    const user = button.getAttribute('id');
+    swal({
+            title: 'Hapus ' + user + '?',
+            text: 'Ketika Anda tekan OK, maka data tidak dapat dikembalikan !',
+            icon: 'warning',
+            buttons: true,
+            dangerMode: true,
+        })
+    .then((willDelete) => {
+        if (willDelete) {
+          const form = document.getElementById('delete-form');
+          form.action = '/user/' + id + '/delete';
+          form.submit();
+        }
+    });
+}
 </script>
 <script>
     // Ambil referensi ke elemen input password

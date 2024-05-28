@@ -111,10 +111,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $kelas = Kelas::find($id);
+        $kelas = User::find($id);
 
         $kelas->delete();
 
-        return redirect('kelas')->with('sukses', 'Hapus data berhasil');
+        return redirect()->back()->with('sukses', 'Hapus data berhasil');
     }
 }
