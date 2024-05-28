@@ -23,18 +23,22 @@ class AbsensiController extends Controller
     
     public function absensi($kelas_id)
     {
-        $now = Carbon::now();
-        $tanggal = $now->year . '-' . $now->month . '-' . $now->day;
-        $tanggal = $now->format('Y-m-d');
+        $tanggal = Carbon::today()->toDateString();
 
-        $exists = Absensi::where('kelas_id', $kelas_id)->where('tanggal', $tanggal)->exists();
+        $siswa = Siswa::where('kelas_id', $kelas_id)->get();
 
-        if($exists){
+        $exists = Absensi::where('kelas_id', $kelas_id)->where('tanggal', $tanggal)->get();
+
+        if($exists->count() == $siswa->count()){
             $kelas = Kelas::find($kelas_id);
             return redirect('absensi')->with('absensi-complete', 'Siswa kelas ' . $kelas->kelas . ' telah melakukan absensi pada hari ini.');
         }else
         {
-            $siswa = Siswa::where('kelas_id', $kelas_id)->get();
+            $siswa = Siswa::where('kelas_id', $kelas_id)
+              ->whereDoesntHave('absensi', function ($query) use ($tanggal) {
+                  $query->where('tanggal', $tanggal);
+              })
+              ->get();
             $kelas = Kelas::find($kelas_id);
             
             return view('absensi.absensiSiswa', compact('siswa', 'kelas'));
@@ -85,22 +89,26 @@ class AbsensiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $kelas_id)
+    public function update(Request $request, $kelas_id, $siswa_id)
     {
         $tanggalSekarang = now('Asia/Jakarta')->format('Y-m-d H:i:s');
-        $siswa_get = Absensi::where('siswa_id', $siswa_id)->where('tanggal', $tanggalSekarang)->first();
-
-        if ($siswa_get) {
-            $siswa_get->status = $request->status;
-            $siswa_get->save();
-        }
+        $siswa = Absensi::where('siswa_id', $siswa_id)->where('tanggal', $tanggalSekarang)->first();
+        
+        $siswa->status = $request->status_update;
+        $siswa->update();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Absensi $absensi)
+    public function destroy($siswa_id, $kelas_id)
     {
-        //
+        $tanggal = Carbon::today()->toDateString();
+        $siswa = Absensi::where('siswa_id', $siswa_id)->where('kelas_id', $kelas_id)->where('tanggal', $tanggal)->first();
+        $siswa_delete = Absensi::find($siswa->id);
+
+        $siswa_delete->delete();
+
+        return redirect()->back();
     }
 }

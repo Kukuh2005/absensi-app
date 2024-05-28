@@ -63,5 +63,5 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin,guru']], function(){
     Route::get('/absensi', [AbsensiController::class, 'index']);
     Route::get('/absensi/{kelas_id}', [AbsensiController::class, 'absensi']);
     Route::post('/absensi/{kelas_id}/store', [AbsensiController::class, 'store']);
-    Route::put('/absensi/{kelas_id}/update', [AbsensiController::class, 'update']);
+    Route::get('/absensi/{siswa_id}/{kelas_id}/delete', [AbsensiController::class, 'destroy']);
 });

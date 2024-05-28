@@ -5,7 +5,7 @@
 @section('content')
 <div class="content-wrapper">
     <div class="row">
-        <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+        <div class="col-md-12 mb-5">
             <h3 class="font-weight-bold">Selamat datang {{auth()->user()->username}}!</h3>
             <h6 class="font-weight-normal mb-0">Kamu login sebagai <span class="text-primary">{{auth()->user()->level}}</span></h6>
         </div>

@@ -26,7 +26,7 @@ class RekapAbsensiController extends Controller
         $tanggal_sampai = $now->format('Y-m-d');
 
         $kelas = Kelas::find($kelas_id);
-        $siswa = Absensi::where('kelas_id', $kelas_id)->where('tanggal', $tanggal)->get();
+        $siswa = Absensi::where('kelas_id', $kelas_id)->where('tanggal', $tanggal)->orderBy('siswa_id', 'asc')->get();
 
         return view('rekapAbsensi.rekap', compact('kelas', 'siswa', 'tanggal_dari', 'tanggal_sampai'));
     }
